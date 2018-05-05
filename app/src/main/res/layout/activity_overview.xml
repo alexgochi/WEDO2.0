@@ -33,6 +33,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="@dimen/text_size_large"
-        android:text="@string/app_name"/>
+        android:text="@string/wedo"/>
 
 </RelativeLayout>

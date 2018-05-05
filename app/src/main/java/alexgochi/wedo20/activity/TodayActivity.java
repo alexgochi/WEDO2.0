@@ -95,6 +95,7 @@ public class TodayActivity extends Counter implements NavigationView.OnNavigatio
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
                     case 0:
+                        mAdapter.notifyDataSetChanged();
                         deleteTask();
                         Toast.makeText(getApplicationContext(), "List Completed", Toast.LENGTH_SHORT).show();
                         break;
@@ -176,8 +177,8 @@ public class TodayActivity extends Counter implements NavigationView.OnNavigatio
         db.delete(TaskContract.TaskEntry.TABLE1,
                 TaskContract.TaskEntry.COL_TASK_TITLE1 + " = ?",
                 new String[]{task});
-        db.close();
         updateUI();
+        db.close();
     }
 
     public void deleteAllTask() {

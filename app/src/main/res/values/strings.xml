@@ -33,4 +33,5 @@
     <string name="preview_list">Preview : </string>
     <string name="search_todo">Search List</string>
     <string name="pie_chart">PieChart</string>
+    <string name="wedo">WEDO</string>
 </resources>
