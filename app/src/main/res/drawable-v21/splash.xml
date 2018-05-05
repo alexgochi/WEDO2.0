@@ -9,7 +9,7 @@
         <bitmap
             android:filter="true"
             android:gravity="center"
-            android:src="@drawable/wedo" />
+            android:src="@drawable/wedo_splash" />
     </item>
 
 </layer-list>
