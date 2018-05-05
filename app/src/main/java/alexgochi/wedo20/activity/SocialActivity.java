@@ -82,7 +82,7 @@ public class SocialActivity extends Counter implements NavigationView.OnNavigati
                 // set item background
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(0x00, 0xCC, 0x00)));
                 // set item width
-                deleteItem.setWidth(70);
+                deleteItem.setWidth(80);
                 // set a icon
                 deleteItem.setIcon(R.drawable.ic_done);
                 // add to menu
