@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">WEDO2.0</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="nav_text">KEEP FIGHTING on YOUR DREAM</string>
+    <string name="nav_title">Anything you can do!</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="important">Important</string>
+    <string name="work">Work</string>
+    <string name="social">Social</string>
+
+    <string name="action_clear">Clear</string>
+    <string name="home">Home</string>
+    <string name="done">Done</string>
+    <string name="overview">Overview</string>
+    <string name="desc_overview">Tap to view statistic</string>
+    <string name="todo_list">Todo List</string>
+    <string name="hint_note">Note</string>
+    <string name="input_todo">List can not be empty!</string>
+    <string name="title">Hello You</string>
+    <string name="delete_text">Done</string>
+    <string name="todo">TODO</string>
+    <string name="total">Total&#032;:&#032;%d </string>
+    <string name="app_today">Today Activity</string>
+    <string name="app_tomorrow">Tomorrow Activity</string>
+    <string name="app_important">Important Activity</string>
+    <string name="app_social">Social Activity</string>
+    <string name="app_work">Work Activity</string>
+    <string name="list">0 List</string>
+    <string name="preview_list">Preview : </string>
+    <string name="search_todo">Search List</string>
+    <string name="pie_chart">PieChart</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/today_act"
+        android:title="@string/today"
+        android:icon="@drawable/ic_today"/>
+
+    <item
+        android:id="@+id/tomorrow_act"
+        android:title="@string/tomorrow"
+        android:icon="@drawable/ic_tomorrow"/>
+
+    <item
+        android:id="@+id/important_act"
+        android:title="@string/important"
+        android:icon="@drawable/ic_important"/>
+    <item
+        android:id="@+id/work_act"
+        android:title="@string/work"
+        android:icon="@drawable/ic_work"/>
+
+    <item
+        android:id="@+id/social_act"
+        android:title="@string/social"
+        android:icon="@drawable/ic_social"/>
+
+</menu>
