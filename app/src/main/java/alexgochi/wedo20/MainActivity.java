@@ -39,7 +39,7 @@ public class MainActivity extends Counter implements NavigationView.OnNavigation
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView = (NavigationView) findViewById(R.id.nav_main);
         navigationView.setNavigationItemSelectedListener(this);
@@ -112,27 +112,22 @@ public class MainActivity extends Counter implements NavigationView.OnNavigation
 
         if (id == R.id.today_act) {
             Intent in_today = new Intent(MainActivity.this, TodayActivity.class);
-            Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_LONG).show();
             startActivity(in_today);
             finish();
         } else if (id == R.id.tomorrow_act) {
             Intent in_tomorrow = new Intent(MainActivity.this, TomorrowActivity.class);
-            Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_LONG).show();
             startActivity(in_tomorrow);
             finish();
         } else if (id == R.id.important_act) {
             Intent in_important = new Intent(MainActivity.this, ImportantActivity.class);
-            Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_LONG).show();
             startActivity(in_important);
             finish();
         } else if (id == R.id.work_act) {
             Intent in_work = new Intent(MainActivity.this, WorkActivity.class);
-            Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_LONG).show();
             startActivity(in_work);
             finish();
         } else if (id == R.id.social_act) {
             Intent in_social = new Intent(MainActivity.this, SocialActivity.class);
-            Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_LONG).show();
             startActivity(in_social);
             finish();
         }
@@ -144,35 +139,30 @@ public class MainActivity extends Counter implements NavigationView.OnNavigation
 
     public void TodayActivity(View view) {
         Intent in_today = new Intent(MainActivity.this, TodayActivity.class);
-        Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_SHORT).show();
         startActivity(in_today);
         finish();
     }
 
     public void TomorrowActivity(View view) {
         Intent in_tomorrow = new Intent(MainActivity.this, alexgochi.wedo20.activity.TomorrowActivity.class);
-        Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_SHORT).show();
         startActivity(in_tomorrow);
         finish();
     }
 
     public void ImportantActivity(View view) {
         Intent in_important = new Intent(MainActivity.this, ImportantActivity.class);
-        Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_SHORT).show();
         startActivity(in_important);
         finish();
     }
 
     public void WorkActivity(View view) {
         Intent in_work = new Intent(MainActivity.this, WorkActivity.class);
-        Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_SHORT).show();
         startActivity(in_work);
         finish();
     }
 
     public void SocialActivity(View view) {
         Intent in_social = new Intent(MainActivity.this, SocialActivity.class);
-        Toast.makeText(getApplicationContext(), "Swipe Right to Delete", Toast.LENGTH_SHORT).show();
         startActivity(in_social);
         finish();
     }

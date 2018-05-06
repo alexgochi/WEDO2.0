@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -57,7 +58,7 @@ public class TodayActivity extends Counter implements NavigationView.OnNavigatio
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView = (NavigationView) findViewById(R.id.nav_today);
         navigationView.setNavigationItemSelectedListener(this);
@@ -71,39 +72,36 @@ public class TodayActivity extends Counter implements NavigationView.OnNavigatio
         });
 
         Ltoday = (SwipeMenuListView) findViewById(R.id.list_today);
-        SwipeMenuCreator creator = new SwipeMenuCreator() {
-            @Override
-            public void create(SwipeMenu menu) {
-                // create "delete" item
-                SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
-                // set item background
-                deleteItem.setBackground(new ColorDrawable(Color.rgb(0x00, 0xCC, 0x00)));
-                // set item width
-                deleteItem.setWidth(80);
-                // set a icon
-                deleteItem.setIcon(R.drawable.ic_done);
-                // add to menu
-                menu.addMenuItem(deleteItem);
-            }
-        };
-        // set creator
-        Ltoday.setMenuCreator(creator);
-        Ltoday.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
 
-        Ltoday.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                switch (index) {
-                    case 0:
-                        mAdapter.notifyDataSetChanged();
-                        deleteTask();
-                        Toast.makeText(getApplicationContext(), "List Completed", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                // false : close the menu; true : not close the menu
-                return false;
-            }
-        });
+//        SwipeMenuCreator creator = new SwipeMenuCreator() {
+//            @Override
+//            public void create(SwipeMenu menu) {
+//                // create "delete" item
+//                SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
+//                // set item background
+//                deleteItem.setBackground(new ColorDrawable(Color.rgb(0x00, 0xCC, 0x00)));
+//                // set item width
+//                deleteItem.setWidth(80);
+//                // set a icon
+//                deleteItem.setIcon(R.drawable.ic_done);
+//                // add to menu
+//                menu.addMenuItem(deleteItem);
+//            }
+//        };
+//        // set creator
+//        Ltoday.setMenuCreator(creator);
+//        Ltoday.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+//
+//        Ltoday.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+//                deleteTask();
+//
+//                Toast.makeText(getApplicationContext(), "List Completed", Toast.LENGTH_SHORT).show();
+//                // false : close the menu; true : not close the menu
+//                return true;
+//            }
+//        });
         updateUI();
     }
 
@@ -170,15 +168,34 @@ public class TodayActivity extends Counter implements NavigationView.OnNavigatio
         toast.show();
     }
 
-    public void deleteTask() {
-        TextView taskTextView = (TextView) findViewById(R.id.task_title);
-        String task = String.valueOf(taskTextView.getText());
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.delete(TaskContract.TaskEntry.TABLE1,
-                TaskContract.TaskEntry.COL_TASK_TITLE1 + " = ?",
-                new String[]{task});
-        updateUI();
-        db.close();
+    public void deleteTask(final View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Are you done?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user pressed "yes", then he is allowed to exit from application
+                View parent = (View) view.getParent();
+                TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
+                String task = String.valueOf(taskTextView.getText());
+                SQLiteDatabase db = mHelper.getWritableDatabase();
+                db.delete(TaskContract.TaskEntry.TABLE1,
+                        TaskContract.TaskEntry.COL_TASK_TITLE1 + " = ?",
+                        new String[]{task});
+                db.close();
+                updateUI();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void deleteAllTask() {
